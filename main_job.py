@@ -24,6 +24,8 @@ if __name__ == '__main__':
     pool = Pool(processes=7)
     for _ in tqdm.tqdm(pool.imap_unordered(run_job, devices), total=len(devices)):
         pass
+    pool.close()
+    pool.join()
 
     for k, v in shared_dictionary.items():
         print(f'Host: {k}')
